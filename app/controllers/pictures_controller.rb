@@ -1,5 +1,5 @@
 class PicturesController < ApplicationController
-  
+
   def index
     @pictures = Picture.all
   end
@@ -7,7 +7,6 @@ class PicturesController < ApplicationController
   def show
     @picture = Picture.find(params[:id])
   end
-
 
   def new
     @picture = Picture.new
@@ -37,6 +36,12 @@ class PicturesController < ApplicationController
       # otherwise render the view associated with the action :edit (i.e. edit.html.erb)
       render :edit
     end
+  end
+
+  def destroy
+    @picture = Picture.find(params[:id])
+    @picture.destroy
+    redirect_to pictures_url
   end
 
   private
